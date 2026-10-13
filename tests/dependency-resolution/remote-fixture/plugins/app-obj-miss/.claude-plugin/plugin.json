@@ -1,0 +1,7 @@
+{
+  "name": "app-obj-miss",
+  "version": "1.0.0",
+  "description": "Object-form dependency with range ^3.0.0 that no tag satisfies.",
+  "author": { "name": "fixture" },
+  "dependencies": [{ "name": "dep", "version": "^3.0.0" }]
+}

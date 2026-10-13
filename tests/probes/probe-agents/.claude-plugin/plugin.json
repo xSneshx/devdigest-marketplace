@@ -1,0 +1,7 @@
+{
+  "name": "probe-agents",
+  "version": "0.0.1",
+  "description": "Probe plugin: agent with a cross-plugin skill preload, a plugin-level hook, and a command/skill name collision.",
+  "author": { "name": "xSneshx" },
+  "dependencies": [{ "name": "probe-skills" }]
+}

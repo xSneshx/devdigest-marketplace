@@ -1,0 +1,6 @@
+{
+  "name": "probe-skills",
+  "version": "0.0.1",
+  "description": "Probe plugin: holds one skill with a unique sentinel phrase.",
+  "author": { "name": "xSneshx" }
+}

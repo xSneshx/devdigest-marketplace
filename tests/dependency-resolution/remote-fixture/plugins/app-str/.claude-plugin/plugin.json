@@ -1,0 +1,7 @@
+{
+  "name": "app-str",
+  "version": "1.0.0",
+  "description": "String-form dependency with range (silently ignored by the CLI).",
+  "author": { "name": "fixture" },
+  "dependencies": ["dep@testmp@^1.0.0"]
+}

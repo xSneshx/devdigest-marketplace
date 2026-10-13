@@ -1,0 +1,7 @@
+{
+  "name": "app-str-miss",
+  "version": "1.0.0",
+  "description": "String-form dependency with range ^3.0.0 that no tag satisfies.",
+  "author": { "name": "fixture" },
+  "dependencies": ["dep@testmp@^3.0.0"]
+}
