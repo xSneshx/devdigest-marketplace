@@ -26,6 +26,14 @@ export function defaultGit(root) {
       const untracked = run(root, ['ls-files', '--others', '--exclude-standard']).split('\n');
       return [...new Set([...tracked, ...untracked].filter((f) => f !== ''))];
     },
+    hasTag(tag) {
+      try {
+        run(root, ['rev-parse', '--verify', '--quiet', `refs/tags/${tag}^{commit}`]);
+        return true;
+      } catch {
+        return false;
+      }
+    },
     fileAt(sha, relPath) {
       try {
         return run(root, ['show', `${sha}:./${relPath}`]);

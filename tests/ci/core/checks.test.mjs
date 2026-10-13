@@ -119,23 +119,36 @@ describe('skills-backed check (AC-71)', () => {
 });
 
 describe('versions check (AC-9)', () => {
-  const gitStub = (changed, baseManifestVersion) => ({
+  const gitStub = (changed, baseManifestVersion, tags = []) => ({
     resolve: () => 'abc123',
     changedFiles: () => changed,
     fileAt: () => (baseManifestVersion === null ? null : JSON.stringify({ name: 'x', version: baseManifestVersion })),
+    hasTag: (tag) => tags.includes(tag),
   });
-  it('fails a component edit without a version bump and names the plugin', async () => {
+  const edit = ['plugins/beta/agents/a.md'];
+  it('fails a component edit on a released version without a bump, naming the plugin', async () => {
     const root = await build([{ name: 'alpha' }, { name: 'beta' }]);
-    const ctx = ctxFor(root, { base: 'origin/main', git: gitStub(['plugins/beta/agents/a.md'], '1.0.0') });
+    const ctx = ctxFor(root, { base: 'origin/main', git: gitStub(edit, '1.0.0', ['beta--v1.0.0']) });
     const errors = errorsOf(await versions.run(ctx));
     assert.equal(errors.length, 1);
-    assert.match(errors[0], /^beta: .*version is still 1\.0\.0/);
+    assert.match(errors[0], /^beta: .*released version 1\.0\.0 .*unchanged/);
   });
-  it('passes when the version moved, nothing changed, or the plugin is new', async () => {
-    const root = await build([{ name: 'alpha' }]);
-    for (const [changed, before] of [[['plugins/alpha/agents/a.md'], '0.9.0'], [[], '1.0.0'], [['plugins/alpha/agents/a.md'], null]]) {
-      assert.deepEqual(errorsOf(await versions.run(ctxFor(root, { base: 'main', git: gitStub(changed, before) }))), []);
-    }
+  it('passes a component edit on an unreleased version', async () => {
+    const root = await build([{ name: 'beta' }]);
+    assert.deepEqual(errorsOf(await versions.run(ctxFor(root, { base: 'main', git: gitStub(edit, '1.0.0') }))), []);
+  });
+  it('passes a released plugin that was bumped, was not touched, or is new', async () => {
+    const root = await build([{ name: 'beta', version: '1.1.0' }]);
+    const tags = ['beta--v1.0.0', 'beta--v1.1.0'];
+    assert.deepEqual(errorsOf(await versions.run(ctxFor(root, { base: 'main', git: gitStub(edit, '1.0.0', tags) }))), []);
+    const same = await build([{ name: 'beta' }]);
+    assert.deepEqual(errorsOf(await versions.run(ctxFor(same, { base: 'main', git: gitStub([], '1.0.0', tags) }))), []);
+    assert.deepEqual(errorsOf(await versions.run(ctxFor(same, { base: 'main', git: gitStub(edit, null, tags) }))), []);
+  });
+  it('fails a version that goes down against the base', async () => {
+    const root = await build([{ name: 'beta', version: '1.0.0' }]);
+    const errors = errorsOf(await versions.run(ctxFor(root, { base: 'main', git: gitStub([], '1.2.0') })));
+    assert.match(errors[0], /^beta: version went down from 1\.2\.0/);
   });
   it('is skipped without a base ref', async () => {
     const root = await build([{ name: 'alpha' }]);
