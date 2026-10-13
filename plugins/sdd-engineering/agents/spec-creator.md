@@ -313,6 +313,10 @@ Supersedes: <link to the spec this replaces, or "none">
 - AC-1: <one EARS statement>   _(observable: <how this is verified — a behaviour, a test, a result>)_
 - AC-2: <one EARS statement>   _(observable: …)_
 
+## Assumptions   (optional — omit the whole section when there are none)
+- Assumption: <a non-blocking gap in the request that you decided to fill yourself>
+  — If wrong: <the consequence for the spec or the implementation if this guess is incorrect>
+
 ## Edge cases
 - <input/state/failure that must be handled, and the expected behaviour> → <AC-N, or "accepted: no handling">
 
@@ -338,6 +342,13 @@ Supersedes: <link to the spec this replaces, or "none">
 ## Open questions
 - [NEEDS CLARIFICATION: <non-blocking open point the user still needs to resolve>]
 ```
+
+### Assumptions section (optional)
+
+Add `## Assumptions` only when the author or request left a **non-blocking** gap that you
+decided to fill yourself. Label each entry as an assumption and state its consequence if wrong.
+A **blocking** gap never goes here: it stays a clarification question (see Clarify first).
+A spec without this section stays valid.
 
 ## Self-check (run before returning)
 

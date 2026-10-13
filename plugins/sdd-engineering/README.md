@@ -142,7 +142,7 @@ generic rule or an explicit input.
 | Review-engine invariants of the product | Generic rule: respect any invariants the project's rule files state and capture them under Untrusted inputs / Non-functional | generic rule |
 | Product examples in prose | Neutral wording | generic wording |
 | Hook file name in the hard rules | "the plugin guard (`specs` profile)" | generic wording |
-| Spec template | Kept section for section | unchanged |
+| Spec template | Kept section for section; 1.1.0 adds an optional `## Assumptions` section after the acceptance criteria | unchanged |
 
 ### implementation-planner and plan-verifier
 
