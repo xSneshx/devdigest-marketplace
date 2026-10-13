@@ -35,3 +35,17 @@ Rows marked "rerun" failed in the first full run because of case-design defects 
 ## Defect found in the plugin by the evals
 
 `/sdd-engineering:sdd-retro` told the model to call the manual-only `workflow-retro` skill through the Skill tool, which `disable-model-invocation` blocks. The command now reads the skill's `SKILL.md` and follows it (sdd-engineering CHANGELOG, 1.0.0).
+
+## Follow-up rerun (2026-10-13, after 1.1.0)
+
+The four open cases were fixed (judge rubrics limited to what the caller's last message shows, cheaper chain cases) and rerun with `--runs 1`, ablation `with-without`, hard cap USD 3 (spent 2.28):
+
+| Case | With plugin | Without | Note |
+|---|---|---|---|
+| sdd-engineering/positive-reachability | pass | fail | |
+| code-agents/positive-test-writer-adds-test | pass | fail | caller confirms `slug.js unchanged: yes`; test file exists |
+| sdd-engineering/positive-spec-assumptions (new in 1.1.0) | pass | fail | spec contains a labelled `## Assumptions` entry |
+| sdd-engineering/workflow-chain | pass | fail | spec → plan → execute-plan → review → verify, cost 0.60 |
+| sdd-engineering/positive-run-plan-parallel | partial | — | `tool_used` grader passed (2 parallel `Agent` dispatches of the implementer, AC-63); the llm report rubric was skipped by the per-case cost ceiling |
+
+Current state: 23 of 24 cases pass with the plugin loaded; the remaining one passes its deterministic dispatch check and has an unjudged report. Total eval spend for the lab ≈ USD 17.6.

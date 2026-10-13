@@ -10,7 +10,7 @@
 | CLI version | 2.1.296 (Claude Code) |
 | Validation result | `claude plugin validate --strict` passed; CI `validate.yml` green on `main`; `versions` check passes against `sdd-engineering--v1.0.0` |
 | Change | optional `## Assumptions` section in the spec-creator template (additions only); new eval `positive-spec-assumptions` |
-| Eval results | the new case was not run live (G7 budget exhausted); static CI checks pass |
+| Eval results | `positive-spec-assumptions` passes with the plugin and fails without it (rerun 2026-10-13, see evals-1.0.0.md) |
 | Dependency-resolution rule in force | HEAD-within-range — dependencies stay at 1.0.0 within `^1.0.0` |
 
 ## Update in the consumer project (G11)
