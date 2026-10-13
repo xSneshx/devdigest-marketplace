@@ -12,4 +12,4 @@ Report what this plugin set makes reachable. Do not do any other work.
 2. For each of these commands say whether it resolves (a command may show up in your context as a skill of the same plugin; that counts as resolved): `/sdd-engineering:spec`, `/sdd-engineering:plan`, `/sdd-engineering:execute-plan`, `/sdd-engineering:verify`.
 3. For each of these agents say whether it resolves: `sdd-engineering:spec-creator`, `sdd-engineering:implementation-planner`, `sdd-engineering:plan-verifier`, `code-agents:implementer`, `architecture-review:architecture-reviewer`.
 
-Say "unresolved" for anything you cannot see; do not guess.
+Say "unresolved" for anything you cannot see; do not guess. Items that are manual-only are intentionally hidden from you; do not mention them.

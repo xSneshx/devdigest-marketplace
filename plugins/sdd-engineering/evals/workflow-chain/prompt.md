@@ -1,12 +1,12 @@
 ---
-max_turns: 25
-timeout_seconds: 900
+max_turns: 16
+timeout_seconds: 600
 tags: [workflow, chain, expensive]
 allowed_tools: [Read, Write, Edit, Glob, Grep, Bash, Skill, Agent]
 plugins: ["../..", "../../../engineering-paved-path", "../../../research-tools", "../../../architecture-review", "../../../code-agents"]
 ---
 
-Run the approved-spec-to-reviewed-code chain on the tiny fixture below. Create the files in your current working directory (never under `/tmp`), then run `/sdd-engineering:execute-plan plan:docs/plans/plan.md` for real (implement, review with `architecture-review:architecture-reviewer`, verify with `sdd-engineering:plan-verifier`) and finish with a traceability matrix mapping every `AC-N` to a task and to evidence. Do not ask questions; do not run `npm install`; keep every step minimal.
+Run the approved-spec-to-reviewed-code chain on the tiny fixture below. Create the files in your current working directory (never under `/tmp`), then run `/sdd-engineering:execute-plan plan:docs/plans/plan.md` for real (implement, review with `architecture-review:architecture-reviewer`, verify with `sdd-engineering:plan-verifier`) and finish with a traceability matrix mapping every `AC-N` to a task and to evidence. Do not ask questions; do not run `npm install`; keep every step minimal: one pass, at most one fix iteration, no extra files, and a final report of at most 20 lines.
 
 `CLAUDE.md`:
 

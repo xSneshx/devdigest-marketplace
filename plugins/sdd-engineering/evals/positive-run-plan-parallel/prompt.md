@@ -1,12 +1,12 @@
 ---
-max_turns: 30
-timeout_seconds: 900
+max_turns: 18
+timeout_seconds: 600
 tags: [positive]
 allowed_tools: [Read, Write, Edit, Glob, Grep, Bash, Skill, Agent]
 plugins: ["../..", "../../../engineering-paved-path", "../../../research-tools", "../../../architecture-review", "../../../code-agents"]
 ---
 
-This is a real run, not a dry run: create the files below in your current working directory (never under `/tmp`), then execute the plan for real with `/sdd-engineering:execute-plan plan:docs/plans/plan.md` and report what the run did. The project is dependency-free (Node 22, ES modules); do not run `npm install`, do not ask me questions, and continue without waiting for confirmation.
+This is a real run, not a dry run: create the files below in your current working directory (never under `/tmp`), then execute the plan for real with `/sdd-engineering:execute-plan plan:docs/plans/plan.md` and report what the run did. The project is dependency-free (Node 22, ES modules); do not run `npm install`, do not ask me questions, and continue without waiting for confirmation. Keep it cheap: one pass, no fix loop beyond a single iteration, no extra files or explanations, and a report of at most 15 lines.
 
 `specs/tiny.md` (approved):
 
