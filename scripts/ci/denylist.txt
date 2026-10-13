@@ -1,0 +1,15 @@
+# Deny-list for check-content.mjs: tokens that must not appear in any scanned file.
+# One entry per line. Matching is case-insensitive and line based.
+# `re:<pattern>` is a regular expression; anything else is a literal string.
+# This file is itself exempt from the scan (see REVIEWED_EXCEPTIONS in check-content.mjs).
+#
+# The only allowed occurrence of the first token is the exact string `devdigest-marketplace`
+# (repo, catalog and install-command name); check-content.mjs removes it before matching.
+devdigest
+server/src
+reviewer-core
+mcp__devdigest
+INSIGHTS.md
+docs/retros/ledger.md
+.claude/skills/
+re:localhost:300[01]

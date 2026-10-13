@@ -1,0 +1,43 @@
+{
+  "engineering-paved-path": {
+    "skills": [
+      "react-best-practices",
+      "next-best-practices",
+      "frontend-ui-architecture",
+      "react-testing-library",
+      "fastify-best-practices",
+      "onion-architecture",
+      "typescript-expert",
+      "zod",
+      "security",
+      "mermaid-diagram"
+    ],
+    "agents": [],
+    "commands": [],
+    "hooks": []
+  },
+  "research-tools": {
+    "skills": [],
+    "agents": ["researcher"],
+    "commands": [],
+    "hooks": []
+  },
+  "architecture-review": {
+    "skills": [],
+    "agents": ["architecture-reviewer"],
+    "commands": [],
+    "hooks": []
+  },
+  "code-agents": {
+    "skills": [],
+    "agents": ["implementer", "test-writer"],
+    "commands": [],
+    "hooks": ["PreToolUse"]
+  },
+  "sdd-engineering": {
+    "skills": ["run-plan", "workflow-retro"],
+    "agents": ["spec-creator", "implementation-planner", "plan-verifier"],
+    "commands": ["spec", "plan", "execute-plan", "verify", "sdd-retro"],
+    "hooks": ["PreToolUse"]
+  }
+}
