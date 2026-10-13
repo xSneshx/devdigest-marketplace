@@ -1,0 +1,1 @@
+{ "name": "api", "private": true, "scripts": { "test": "vitest run", "typecheck": "tsc --noEmit", "test:watch": "vitest", "dev": "tsx watch" } }
