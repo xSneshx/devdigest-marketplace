@@ -50,3 +50,23 @@ Cause: the CLI clones the marketplace **shallow** (`git rev-parse --is-shallow-r
 - Version ranges are declared **only** in the object form; the `name@marketplace@range` string form is rejected by CI because the CLI silently ignores the range (AC-73).
 - Guards key on `agent_type` = `<plugin>:<agent>`.
 - The SDD command that executes a plan must not be named `run-plan` (it would shadow the skill).
+
+## G6 — Live guard refusals (AC-25, AC-26, AC-27, AC-29, AC-31, AC-58, AC-68)
+
+CLI 2.1.296, a fresh clone of the lab target per run, all five plugins loaded with `--plugin-dir`, `--permission-mode acceptEdits`, `--max-budget-usd 0.25` per run. Plugin root shown as `<MP>`.
+
+Attempt 1 (agents dispatched as subagents from a main session) was inconclusive: Opus-backed subagent sessions hit the per-run budget before the tool call, and `plan-verifier` declined by role without calling a tool. Only the main-session check below came from it. Cost ≈ USD 2.24.
+
+Attempt 2 runs each guarded agent as the main thread (`claude --agent <plugin>:<agent>`), which also sets `agent_type` in hook input. Cost ≈ USD 0.41.
+
+| Agent (`agent_type`) | Attempt | Result | Files changed |
+|---|---|---|---|
+| `sdd-engineering:spec-creator` | Write `src/notes.ts` (outside `specs/`) | `PreToolUse:Write hook error: [sh "<MP>/plugins/sdd-engineering/hooks/run-guard.sh"]: sdd-engineering-guard: Blocked: …` | none |
+| `sdd-engineering:plan-verifier` | Write `verify-report.md` | Write tool not available (`disallowedTools`) — refused before any hook | none |
+| `sdd-engineering:plan-verifier` | Bash `echo ok > verify-report.md` | `sdd-engineering-guard: Blocked: output redirection writes a file: echo ok > verify-report.md. Only 2>&1 and >/dev/null are allowed. …` | none |
+| `code-agents:implementer` | Write `src/generated/version.ts` (protected path) | `PreToolUse:Write hook error: [sh "<MP>/plugins/code-agents/hooks/run-guard.sh"]: code-agents-guard: Blocked: …` | none |
+| `code-agents:test-writer` | Write `src/helper.ts` (production file) | `code-agents-guard: Blocked: src/helper.ts is not a test file or a helper i…` | none |
+| each of the four, `PLUGIN_GUARD_TEST_CRASH=1` | an otherwise-allowed write / `ls` | `…-guard: Blocked: the guard could not verify this call (forced crash) …` — fail closed (AC-58) | none |
+| main session (no agent) | Write `main-session-ok.txt` | written (AC-29: guards do not affect the main session) | `main-session-ok.txt` |
+
+Total G6 spend ≈ USD 2.65 (budget raised from 2 to 4 by the user after attempt 1).
