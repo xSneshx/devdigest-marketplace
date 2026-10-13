@@ -1,0 +1,12 @@
+{
+  "name": "sdd-engineering",
+  "version": "1.0.0",
+  "description": "Spec-driven workflow: spec, plan, run-plan, verify and retro agents, skills and commands.",
+  "author": { "name": "xSneshx" },
+  "dependencies": [
+    { "name": "engineering-paved-path", "version": "^1.0.0" },
+    { "name": "research-tools", "version": "^1.0.0" },
+    { "name": "architecture-review", "version": "^1.0.0" },
+    { "name": "code-agents", "version": "^1.0.0" }
+  ]
+}

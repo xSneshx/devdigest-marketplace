@@ -1,0 +1,6 @@
+{
+  "name": "research-tools",
+  "version": "1.0.0",
+  "description": "Read-only researcher agent for investigating a codebase or a topic before a change.",
+  "author": { "name": "xSneshx" }
+}

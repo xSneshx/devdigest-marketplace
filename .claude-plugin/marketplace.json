@@ -1,0 +1,12 @@
+{
+  "name": "devdigest-marketplace",
+  "owner": { "name": "xSneshx" },
+  "metadata": { "description": "Private marketplace of project-agnostic spec-driven engineering plugins for Claude Code." },
+  "plugins": [
+    { "name": "engineering-paved-path", "source": "./plugins/engineering-paved-path", "description": "Paved-path engineering skills: React, Next.js, Fastify, layering, TypeScript, Zod, security and diagrams.", "author": { "name": "xSneshx" } },
+    { "name": "research-tools", "source": "./plugins/research-tools", "description": "Read-only researcher agent for investigating a codebase or a topic before a change.", "author": { "name": "xSneshx" } },
+    { "name": "architecture-review", "source": "./plugins/architecture-review", "description": "Architecture reviewer agent that audits a change against the project's documented rules.", "author": { "name": "xSneshx" } },
+    { "name": "code-agents", "source": "./plugins/code-agents", "description": "Implementer and test-writer agents with plugin-level guard hooks; usable without SDD.", "author": { "name": "xSneshx" } },
+    { "name": "sdd-engineering", "source": "./plugins/sdd-engineering", "description": "Spec-driven workflow: spec, plan, run-plan, verify and retro agents, skills and commands.", "author": { "name": "xSneshx" } }
+  ]
+}

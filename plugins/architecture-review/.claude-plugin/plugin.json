@@ -1,0 +1,7 @@
+{
+  "name": "architecture-review",
+  "version": "1.0.0",
+  "description": "Architecture reviewer agent that audits a change against the project's documented rules.",
+  "author": { "name": "xSneshx" },
+  "dependencies": [ { "name": "engineering-paved-path", "version": "^1.0.0" } ]
+}

@@ -1,0 +1,7 @@
+{
+  "name": "code-agents",
+  "version": "1.0.0",
+  "description": "Implementer and test-writer agents with plugin-level guard hooks; usable without SDD.",
+  "author": { "name": "xSneshx" },
+  "dependencies": [ { "name": "engineering-paved-path", "version": "^1.0.0" } ]
+}
