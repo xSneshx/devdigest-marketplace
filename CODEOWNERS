@@ -1,0 +1,15 @@
+# Catalog-wide default owner
+* @xSneshx
+
+# One owner line per plugin directory
+/plugins/engineering-paved-path/ @xSneshx
+/plugins/research-tools/ @xSneshx
+/plugins/architecture-review/ @xSneshx
+/plugins/code-agents/ @xSneshx
+/plugins/sdd-engineering/ @xSneshx
+
+# Script rules: hooks and supporting scripts execute on consumer machines
+/plugins/*/hooks/ @xSneshx
+/plugins/sdd-engineering/skills/workflow-retro/scripts/ @xSneshx
+/scripts/ @xSneshx
+/.github/ @xSneshx
