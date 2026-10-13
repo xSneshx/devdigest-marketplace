@@ -1,0 +1,5 @@
+{"cases":[
+ {"name":"skill-triggers","tags":["positive"],"runs":[{"score":1,"cost_usd":0.05},{"score":1,"cost_usd":0.05},{"score":0,"cost_usd":0.05}]},
+ {"name":"no-trigger","tags":["negative"],"runs":[{"score":1,"cost_usd":0.02},{"score":1,"cost_usd":0.02},{"score":1,"cost_usd":0.02}]},
+ {"name":"refactor","tags":["workflow"],"runs":[{"score":0,"cost_usd":0.2},{"score":1,"cost_usd":0.2},{"score":0,"cost_usd":0.2}]}
+]}
