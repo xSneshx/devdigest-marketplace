@@ -16,7 +16,7 @@ Commands (all prefixed `sdd-engineering:`):
 | `/sdd-engineering:plan` | Hands an approved spec to the `implementation-planner` agent |
 | `/sdd-engineering:execute-plan` | Runs a plan through the `run-plan` skill |
 | `/sdd-engineering:verify` | Hands a plan to the `plan-verifier` agent |
-| `/sdd-engineering:sdd-retro` | Runs the `workflow-retro` skill (manual only) |
+| `/sdd-engineering:sdd-retro` | Runs the `workflow-retro` procedure by reading its `SKILL.md` (manual only) |
 
 The execute command is `execute-plan`, not `run-plan`: a command and a skill with the same
 name collide, and the command wins and hides the skill. The skill itself stays
