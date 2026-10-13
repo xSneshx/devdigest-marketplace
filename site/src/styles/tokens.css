@@ -1,0 +1,45 @@
+/* Design tokens. Hex only: converted from the prototype's oklch values, with
+   lightness/colour adjusted where a pair missed its WCAG threshold
+   (see contrast.test.ts). Dark is the default theme. */
+:root,
+:root[data-theme='dark'] {
+  color-scheme: dark;
+  --bg: #0b0c0f;
+  --bg-elev: #101217;
+  --bg-elev2: #161920;
+  --bg-hover: #1c2029;
+  --border: #23262f;
+  --border-strong: #5a6170;
+  --text: #e8eaef;
+  --text-dim: #98a0ae;
+  --text-faint: #808896;
+  --accent: #539af2;
+  --accent-fg: #0b0c0f;
+  --kind-plugin: #5fa7ff;
+  --kind-skill: #4dc588;
+  --kind-agent: #bb8aef;
+  --kind-command: #f49752;
+  --kind-hook: #b5c24e;
+  --kind-mcp: #f17074;
+}
+
+:root[data-theme='light'] {
+  color-scheme: light;
+  --bg: #f6f7f9;
+  --bg-elev: #ffffff;
+  --bg-elev2: #ffffff;
+  --bg-hover: #eef0f4;
+  --border: #e2e5ea;
+  --border-strong: #868d99;
+  --text: #161a20;
+  --text-dim: #5a626e;
+  --text-faint: #646c7a;
+  --accent: #1570d1;
+  --accent-fg: #ffffff;
+  --kind-plugin: #1467c2;
+  --kind-skill: #007a43;
+  --kind-agent: #7f4bb1;
+  --kind-command: #b15300;
+  --kind-hook: #49780a;
+  --kind-mcp: #bd2d3e;
+}

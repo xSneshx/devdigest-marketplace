@@ -1,0 +1,185 @@
+@import './tokens.css';
+
+:root {
+  --font-sans: 'IBM Plex Sans', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  --font-mono: 'IBM Plex Mono', ui-monospace, SFMono-Regular, Menlo, Consolas, 'Liberation Mono', monospace;
+  --sidebar-width: 230px;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-sans);
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+h1,
+h2,
+h3,
+h4,
+p,
+ul,
+ol,
+figure {
+  margin: 0;
+}
+
+ul,
+ol {
+  padding: 0;
+  list-style: none;
+}
+
+a {
+  color: var(--accent);
+}
+
+button,
+input,
+select,
+textarea {
+  font: inherit;
+  color: inherit;
+}
+
+button {
+  cursor: pointer;
+}
+
+code,
+pre,
+kbd {
+  font-family: var(--font-mono);
+}
+
+img,
+svg {
+  max-width: 100%;
+}
+
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+/* Kind badges and dots: the badge always carries the kind word, so colour is never the only signal. */
+.kind-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 1px 8px;
+  border: 1px solid currentColor;
+  border-radius: 999px;
+  font-size: 11px;
+  font-weight: 600;
+  line-height: 1.6;
+  text-transform: lowercase;
+  color: var(--text-dim);
+}
+
+.kind-dot {
+  display: inline-block;
+  flex: none;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--text-dim);
+}
+
+.kind-badge[data-kind='plugin'] { color: var(--kind-plugin); }
+.kind-badge[data-kind='skill'] { color: var(--kind-skill); }
+.kind-badge[data-kind='agent'] { color: var(--kind-agent); }
+.kind-badge[data-kind='command'] { color: var(--kind-command); }
+.kind-badge[data-kind='hook'] { color: var(--kind-hook); }
+.kind-badge[data-kind='mcp'] { color: var(--kind-mcp); }
+
+.kind-dot[data-kind='plugin'] { background: var(--kind-plugin); }
+.kind-dot[data-kind='skill'] { background: var(--kind-skill); }
+.kind-dot[data-kind='agent'] { background: var(--kind-agent); }
+.kind-dot[data-kind='command'] { background: var(--kind-command); }
+.kind-dot[data-kind='hook'] { background: var(--kind-hook); }
+.kind-dot[data-kind='mcp'] { background: var(--kind-mcp); }
+
+.clamp-2 {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+/* Layout helpers: reflow down to 320px. */
+.layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  min-height: 100vh;
+}
+
+.layout-sidebar {
+  display: none;
+}
+
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 140px), 1fr));
+  gap: 12px;
+}
+
+@media (min-width: 768px) {
+  .layout {
+    grid-template-columns: var(--sidebar-width) minmax(0, 1fr);
+  }
+
+  .layout-sidebar {
+    display: block;
+  }
+}
+
+@keyframes palette-in {
+  from {
+    opacity: 0;
+    transform: translateY(-8px) scale(0.98);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes toast-in {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+.anim-palette {
+  animation: palette-in 140ms ease-out;
+}
+
+.anim-toast {
+  animation: toast-in 160ms ease-out;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .anim-palette,
+  .anim-toast {
+    animation: none;
+  }
+}
