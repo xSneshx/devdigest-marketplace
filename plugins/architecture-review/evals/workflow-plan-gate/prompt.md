@@ -2,7 +2,8 @@
 max_turns: 15
 timeout_seconds: 400
 tags: [workflow]
-allowed_tools: [Read, Glob, Grep, Skill, Task]
+allowed_tools: [Read, Glob, Grep, Skill, Agent]
+plugins: ["../..", "../../../engineering-paved-path"]
 ---
 
 You are the review step of a plan run. Use the architecture-reviewer agent (architecture-review:architecture-reviewer) on the changed set of the plan below and report its review with the PASS/FAIL gate. The project's documented rules are pasted in the first block and count as the project's AGENTS.md.

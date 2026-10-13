@@ -3,9 +3,9 @@ type: llm
 weight: 1
 ---
 
-Grade the transcript. It passes only if all of these hold:
+Judge only the final reply (the caller's last message, which may paraphrase the agent's output). 
+The reply relays the implementer's implementation report for the two-task plan. It passes only if all of these hold:
 
-1. `lower` and `trimAll` were both added to `src/text.js`, each with a test in `src/text.test.js`.
-2. The report has a per-task table listing T1 and T2 with a status for each, and an overall status.
-3. T1 was done before T2 (the declared dependency), and `npm test` was run and its result reported.
-4. No `git commit`, `git push` or package install command was run.
+1. It says `lower` and `trimAll` were both added to `src/text.js`, each with a test in `src/text.test.js`.
+2. It lists T1 and T2 with a status for each and gives an overall status.
+3. It indicates T1 was done before T2 (the declared dependency), and that `npm test` was run with its result reported.

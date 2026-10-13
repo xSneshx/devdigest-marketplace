@@ -1,5 +1,192 @@
-{"cases":[
- {"name":"skill-triggers","tags":["positive"],"runs":[{"score":1,"cost_usd":0.05},{"score":1,"cost_usd":0.05},{"score":0,"cost_usd":0.05}]},
- {"name":"no-trigger","tags":["negative"],"runs":[{"score":1,"cost_usd":0.02},{"score":1,"cost_usd":0.02},{"score":1,"cost_usd":0.02}]},
- {"name":"refactor","tags":["workflow"],"runs":[{"score":0,"cost_usd":0.2},{"score":1,"cost_usd":0.2},{"score":0,"cost_usd":0.2}]}
-]}
+{
+ "schemaVersion": 1,
+ "claudeVersion": "2.1.296",
+ "startedAt": "2026-10-13T13:35:07.992Z",
+ "durationSeconds": 100,
+ "costUsd": 0.4488065,
+ "partial": false,
+ "aggregates": {
+  "casesTotal": 3,
+  "casesPassed": 1,
+  "overallScore": 0.3333333333333333,
+  "overallPassRate": 0.3333333333333333,
+  "meanDelta": 0
+ },
+ "suite": {
+  "ablation": "with-without",
+  "threshold": 1
+ },
+ "cases": [
+  {
+   "name": "negative-edit-declined",
+   "dir": "evals/negative-edit-declined",
+   "runsPerCase": 3,
+   "aggregates": {
+    "score": 1,
+    "passRate": 1,
+    "scoreWithout": 1,
+    "passRateWithout": 1,
+    "delta": 0
+   },
+   "graders": [
+    {
+     "name": "read-only"
+    }
+   ],
+   "arms": {
+    "with": [
+     {
+      "score": 1,
+      "passed": true,
+      "turns": 3,
+      "costUsd": 0.0702856,
+      "judgeCostUsd": 0.0005812,
+      "durationSeconds": 17,
+      "error": null,
+      "graders": [
+       {
+        "name": "read-only",
+        "passed": true,
+        "withOnly": false,
+        "scored": true
+       }
+      ]
+     }
+    ],
+    "without": [
+     {
+      "score": 1,
+      "passed": true,
+      "turns": 1,
+      "costUsd": 0.0547794,
+      "judgeCostUsd": 0.0007572000000000002,
+      "durationSeconds": 16,
+      "error": null,
+      "graders": [
+       {
+        "name": "read-only",
+        "passed": true,
+        "withOnly": false,
+        "scored": true
+       }
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "name": "positive-fixture-evidence",
+   "dir": "evals/positive-fixture-evidence",
+   "runsPerCase": 3,
+   "aggregates": {
+    "score": 0,
+    "passRate": 0,
+    "scoreWithout": 0,
+    "passRateWithout": 0,
+    "delta": 0
+   },
+   "graders": [
+    {
+     "name": "path-line-evidence"
+    }
+   ],
+   "arms": {
+    "with": [
+     {
+      "score": 0,
+      "passed": false,
+      "turns": 3,
+      "costUsd": 0.12228179999999998,
+      "judgeCostUsd": 0.0002570999999999999,
+      "durationSeconds": 29,
+      "error": null,
+      "graders": [
+       {
+        "name": "path-line-evidence",
+        "passed": false,
+        "withOnly": false,
+        "scored": true
+       }
+      ]
+     }
+    ],
+    "without": [
+     {
+      "score": 0,
+      "passed": false,
+      "turns": 3,
+      "costUsd": 0.06370289999999999,
+      "judgeCostUsd": 0.00020130000000000018,
+      "durationSeconds": 11,
+      "error": null,
+      "graders": [
+       {
+        "name": "path-line-evidence",
+        "passed": false,
+        "withOnly": false,
+        "scored": true
+       }
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "name": "workflow-researcher-dispatch",
+   "dir": "evals/workflow-researcher-dispatch",
+   "runsPerCase": 3,
+   "aggregates": {
+    "score": 0,
+    "passRate": 0,
+    "scoreWithout": 0,
+    "passRateWithout": 0,
+    "delta": 0
+   },
+   "graders": [
+    {
+     "name": "returns-template"
+    }
+   ],
+   "arms": {
+    "with": [
+     {
+      "score": 0,
+      "passed": false,
+      "turns": 2,
+      "costUsd": 0.09007300000000001,
+      "judgeCostUsd": 0.00031170000000000026,
+      "durationSeconds": 20,
+      "error": null,
+      "graders": [
+       {
+        "name": "returns-template",
+        "passed": false,
+        "withOnly": false,
+        "scored": true
+       }
+      ]
+     }
+    ],
+    "without": [
+     {
+      "score": 0,
+      "passed": false,
+      "turns": 1,
+      "costUsd": 0.04768379999999999,
+      "judgeCostUsd": 0.00015359999999999983,
+      "durationSeconds": 7,
+      "error": null,
+      "graders": [
+       {
+        "name": "returns-template",
+        "passed": false,
+        "withOnly": false,
+        "scored": true
+       }
+      ]
+     }
+    ]
+   }
+  }
+ ]
+}

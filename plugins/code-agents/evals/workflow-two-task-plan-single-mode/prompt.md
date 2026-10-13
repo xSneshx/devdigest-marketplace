@@ -2,12 +2,13 @@
 max_turns: 30
 timeout_seconds: 700
 tags: [workflow]
-allowed_tools: [Read, Glob, Grep, Skill, Task, Write, Edit, Bash]
+allowed_tools: [Read, Glob, Grep, Skill, Agent, Write, Edit, Bash]
+plugins: ["../..", "../../../engineering-paved-path"]
 ---
 
 Use the implementer agent (code-agents:implementer) in single mode: hand it the whole plan in `docs/plans/plan.md` of the fixture below and report its implementation report verbatim.
 
-The fixture project is dependency-free (Node 22, ES modules). Create it in a fresh scratch directory (for example under the system temp directory), make that directory your working root, and do not touch any other directory. Do not run `npm install`.
+The fixture project is dependency-free (Node 22, ES modules). Create it directly in your current working directory (the session's project directory; never under `/tmp`, `mktemp` or any other directory outside it) and keep using that directory as the project root. Do not touch anything outside it. Do not run `npm install`.
 
 ## Fixture files to create first
 

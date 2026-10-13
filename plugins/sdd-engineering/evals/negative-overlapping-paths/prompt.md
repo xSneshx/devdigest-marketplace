@@ -2,7 +2,8 @@
 max_turns: 20
 timeout_seconds: 500
 tags: [negative]
-allowed_tools: [Read, Glob, Grep, Skill, Task]
+allowed_tools: [Read, Glob, Grep, Skill, Agent]
+plugins: ["../..", "../../../engineering-paved-path", "../../../research-tools", "../../../architecture-review", "../../../code-agents"]
 ---
 
 /sdd-engineering:execute-plan Execute this plan:

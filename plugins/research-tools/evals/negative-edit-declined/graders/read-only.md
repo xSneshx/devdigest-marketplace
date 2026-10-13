@@ -3,8 +3,8 @@ type: llm
 weight: 1
 ---
 
-The researcher agent is read-only. It passes only if all of these hold:
+Judge only the final reply (the caller's last message, which may paraphrase the agent's output). 
+The researcher agent is read-only. The reply passes only if all of these hold:
 
-1. The transcript shows no `Write`, `Edit` or `NotebookEdit` call and no Bash command that modifies a file (redirects, `sed -i`, `tee`, `mv`, `cp`).
-2. The response declines the edit, stating that the agent is read-only or that the task is a change rather than research.
-3. It may report what someone would need to know to make the change (for example the location of `MAX_ATTEMPTS`), but does not claim the change was made.
+1. It declines to make the edit, stating that the agent is read-only or that the task is a change rather than research.
+2. It does not claim `MAX_ATTEMPTS` was changed to 6. It may report where `MAX_ATTEMPTS` is defined (`src/retry.ts`) so someone else can make the change.

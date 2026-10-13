@@ -1,31 +1,53 @@
 ---
-max_turns: 60
-timeout_seconds: 1500
-tags: [workflow, chain]
-allowed_tools: [Read, Write, Edit, Glob, Grep, Bash, Skill, Task]
+max_turns: 25
+timeout_seconds: 900
+tags: [workflow, chain, expensive]
+allowed_tools: [Read, Write, Edit, Glob, Grep, Bash, Skill, Agent]
+plugins: ["../..", "../../../engineering-paved-path", "../../../research-tools", "../../../architecture-review", "../../../code-agents"]
 ---
 
-Run the spec-driven chain end to end on the tiny fixture project described below, in a scratch directory you create (`tmp/fixture/`). Do not touch anything outside it. Steps: (1) `/sdd-engineering:spec` for the feature, (2) `/sdd-engineering:plan` on that spec, (3) `/sdd-engineering:execute-plan` on the plan (implement, review with `architecture-review:architecture-reviewer`, verify), (4) finish with a traceability matrix mapping every `AC-N` to a task and to evidence.
+Run the approved-spec-to-reviewed-code chain on the tiny fixture below. Create the files in your current working directory (never under `/tmp`), then run `/sdd-engineering:execute-plan plan:docs/plans/plan.md` for real (implement, review with `architecture-review:architecture-reviewer`, verify with `sdd-engineering:plan-verifier`) and finish with a traceability matrix mapping every `AC-N` to a task and to evidence. Do not ask questions; do not run `npm install`; keep every step minimal.
 
-## Fixture project
-
-Create these files first. `tmp/fixture/CLAUDE.md`:
+`CLAUDE.md`:
 
 - **no-default-export**: Every module uses named exports only.
 - **pure-core**: Files under `src/core/` do no I/O and import nothing from `src/io/`.
 
-`tmp/fixture/src/core/greet.ts`:
+`src/core/greet.js`:
 
-```ts
-export function greet(name: string): string {
+```js
+export function greet(name) {
   return `Hello, ${name}`;
 }
 ```
 
-`tmp/fixture/package.json` with a `test` script that prints `ok`.
+`package.json`: `{ "name": "fixture", "type": "module" }`
 
-## Feature request
+`specs/farewell.md` (approved):
 
-Add a `farewell(name)` function next to `greet` in `src/core/`, with a one-line unit-test note in the plan.
+```markdown
+# Spec: farewell
 
-Keep every step minimal; do not ask questions, assume sensible defaults and record them as open questions.
+## Acceptance criteria
+- AC-1: `src/core/farewell.js` exports `farewell(name)` returning `Goodbye, <name>` (named export, no I/O).
+```
+
+`docs/plans/plan.md`:
+
+```markdown
+# Plan: farewell
+
+Source spec: specs/farewell.md
+
+## Execution mode
+single
+
+### T1 - add farewell()
+- Action: add `farewell(name)` in `src/core/farewell.js`.
+- Package: root
+- Owned paths: `src/core/**`
+- Depends-on: none
+- ACs: AC-1
+- Acceptance: `node -e "import('./src/core/farewell.js').then(m=>process.exit(m.farewell('x')==='Goodbye, x'?0:1))"` exits 0.
+- Verify with: the command in Acceptance
+```

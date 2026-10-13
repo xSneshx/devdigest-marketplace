@@ -3,6 +3,7 @@ max_turns: 10
 timeout_seconds: 300
 tags: [workflow]
 allowed_tools: [Read, Glob, Grep, Skill]
+plugins: ["../.."]
 ---
 
 Refactor the React component below in a Next.js App Router project (`client/src/`). It is used only by the route `app/agents/page.tsx`. Use the relevant engineering skills from the loaded plugins. Do not write files; show the refactored result and say where each file goes.

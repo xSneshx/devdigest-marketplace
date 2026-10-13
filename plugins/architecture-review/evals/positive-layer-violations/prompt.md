@@ -2,7 +2,8 @@
 max_turns: 12
 timeout_seconds: 300
 tags: [positive]
-allowed_tools: [Read, Glob, Grep, Skill, Task]
+allowed_tools: [Read, Glob, Grep, Skill, Agent]
+plugins: ["../..", "../../../engineering-paved-path"]
 ---
 
 Use the architecture-reviewer agent (architecture-review:architecture-reviewer) to audit the diff below. The project's documented rules are pasted in the first block and count as the project's AGENTS.md. Report the agent's review output.
