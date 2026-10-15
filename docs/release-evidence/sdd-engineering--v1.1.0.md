@@ -5,7 +5,7 @@
 | Plugin | `sdd-engineering` |
 | Version | 1.1.0 (minor, backward-compatible) |
 | Tag (`<plugin>--v<version>`) | `sdd-engineering--v1.1.0` |
-| Commit SHA | `8dbde50828f39ab370ac111b4f1ad2b088c26403` |
+| Commit SHA | `2fc64c50a948223841df8a36c08ab1a1afdf5f8b` |
 | Date | 2026-10-13 |
 | CLI version | 2.1.296 (Claude Code) |
 | Validation result | `claude plugin validate --strict` passed; CI `validate.yml` green on `main`; `versions` check passes against `sdd-engineering--v1.0.0` |

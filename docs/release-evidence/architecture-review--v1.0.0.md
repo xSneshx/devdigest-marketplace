@@ -5,7 +5,7 @@
 | Plugin | `architecture-review` |
 | Version | 1.0.0 |
 | Tag (`<plugin>--v<version>`) | `architecture-review--v1.0.0` |
-| Commit SHA | `a1eb9edb74cf3fe23683751ab55e069ede7fd8fd` |
+| Commit SHA | `7382f2b2238bb287289624808ef69a6d55c51965` |
 | Date | 2026-10-13 |
 | CLI version | 2.1.296 (Claude Code) |
 | Validation result | `claude plugin validate --strict` passed; CI `validate.yml` green on `main` at this SHA |
