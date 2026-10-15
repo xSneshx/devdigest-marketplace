@@ -1,0 +1,26 @@
+.root {
+  display: inline-flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+}
+
+.button {
+  min-height: 28px;
+  padding: 2px 12px;
+  border: 1px solid var(--border-strong);
+  border-radius: 6px;
+  background: var(--bg-elev2);
+  color: var(--text);
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.button:hover {
+  background: var(--bg-hover);
+}
+
+.manual {
+  font-size: 12px;
+  color: var(--text-dim);
+}

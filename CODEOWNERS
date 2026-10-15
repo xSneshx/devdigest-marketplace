@@ -13,3 +13,6 @@
 /plugins/sdd-engineering/skills/workflow-retro/scripts/ @xSneshx
 /scripts/ @xSneshx
 /.github/ @xSneshx
+
+# Catalog site
+/site/ @xSneshx
