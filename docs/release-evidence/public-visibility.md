@@ -27,10 +27,18 @@ Scope: a fresh `git clone --mirror` that fetched every ref (`refs/heads/*`, `ref
 
 ```sh
 git log --all --format='%ae%n%ce' | sort -u
-git rev-list --all | xargs git grep -I -E -n \
-  '(/Users/|/home/|C:\\|ghp_[A-Za-z0-9]{20,}|github_pat_|gho_|sk-[A-Za-z0-9_-]{20,}|sk-ant-|sk-or-|AKIA[0-9A-Z]{16}|xox[baprs]-|-----BEGIN [A-Z ]*PRIVATE KEY)'
-git log --all --format='%B' | grep -E '<same pattern>'
+git rev-list --all | xargs git grep -I -E -n "$PATTERN"
+git log --all --format='%B' | grep -E "$PATTERN"
 ```
+
+`$PATTERN` matches the following. It is not written out literally here, because this repo's own
+content check would flag the literal text.
+
+- macOS, Linux and Windows home or drive paths;
+- GitHub tokens (classic, fine-grained and OAuth);
+- OpenAI-, Anthropic- and OpenRouter-style API keys;
+- AWS access key ids and Slack tokens;
+- PEM private-key headers.
 
 Results:
 
