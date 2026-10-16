@@ -2,8 +2,10 @@
 // tasks add):
 //   export const name = 'catalog';                       // run-all `--only` key
 //   export async function run(ctx) { return errors }     // string[] , or { errors, skipped? }
-// ctx = { root, base, plugins, flags: { withCli, requireEvals, worktree, snapshot },
+// ctx = { root, base, channelRef, plugins, flags: { withCli, requireEvals, worktree, snapshot },
 //         config, git }.  `plugins` is null (all) or the list from `--plugin`.
+// `channelRef` is `--channel <ref>`, else GITHUB_BASE_REF (pull request target), else
+// GITHUB_REF_NAME (push), else null.
 // A check reports errors as strings that name the plugin or file at fault.
 import { readFileSync } from 'node:fs';
 import path from 'node:path';
@@ -34,6 +36,7 @@ export function parseArgs(argv, env = process.env) {
   const out = {
     root: DEFAULT_ROOT,
     base: env.GITHUB_BASE_REF ? `origin/${env.GITHUB_BASE_REF}` : null,
+    channelRef: env.GITHUB_BASE_REF || env.GITHUB_REF_NAME || null,
     plugins: null,
     only: null,
     flags: { withCli: false, requireEvals: false, worktree: false, snapshot: false },
@@ -43,6 +46,7 @@ export function parseArgs(argv, env = process.env) {
     switch (arg) {
       case '--root': out.root = path.resolve(takeValue(argv, i, arg)); i += 1; break;
       case '--base': out.base = takeValue(argv, i, arg); i += 1; break;
+      case '--channel': out.channelRef = takeValue(argv, i, arg); i += 1; break;
       case '--plugin': out.plugins = csv(takeValue(argv, i, arg)); i += 1; break;
       case '--only': out.only = csv(takeValue(argv, i, arg)); i += 1; break;
       case '--with-cli': out.flags.withCli = true; break;
@@ -59,6 +63,7 @@ export function buildContext(parsed) {
   return {
     root: parsed.root,
     base: parsed.base,
+    channelRef: parsed.channelRef ?? null,
     plugins: parsed.plugins,
     flags: parsed.flags,
     config: loadConfig(),
