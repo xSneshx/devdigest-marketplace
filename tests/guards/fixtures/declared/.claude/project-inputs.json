@@ -1,0 +1,5 @@
+{
+  "protectedPaths": ["infra/secrets/", "config/*.prod.json"],
+  "testLocations": ["spec-area/"],
+  "checkCommands": ["make verify"]
+}

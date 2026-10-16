@@ -1,0 +1,35 @@
+.root {
+  overflow-wrap: anywhere;
+  line-height: 1.6;
+}
+
+.root pre {
+  overflow-x: auto;
+  padding: 0.75rem 1rem;
+  border-radius: 6px;
+  background: var(--code-bg, rgb(127 127 127 / 12%));
+}
+
+.root code {
+  font-family: var(--font-mono, 'IBM Plex Mono', monospace);
+  font-size: 0.9em;
+}
+
+.tableScroll {
+  max-width: 100%;
+  overflow-x: auto;
+}
+
+.tableScroll table {
+  border-collapse: collapse;
+}
+
+.tableScroll th,
+.tableScroll td {
+  padding: 0.35rem 0.75rem;
+  border: 1px solid var(--border, rgb(127 127 127 / 35%));
+}
+
+.inline {
+  overflow-wrap: anywhere;
+}

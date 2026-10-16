@@ -1,0 +1,4 @@
+{"session_id":"s1","hook_event_name":"PreToolUse","tool_name":"Write","tool_input":{"file_path":"/tmp/x/allowed.txt","content":"ok"},"agent_type":"probe-agents:probe-writer"}
+{"session_id":"s1","hook_event_name":"PreToolUse","tool_name":"Write","tool_input":{"file_path":"/tmp/x/forbidden.txt","content":"no"},"agent_type":"probe-agents:probe-writer"}
+not json
+{"session_id":"s1","hook_event_name":"PreToolUse","tool_name":"Write","tool_input":{"file_path":"/tmp/x/main.txt","content":"m"}}

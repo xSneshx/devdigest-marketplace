@@ -1,0 +1,110 @@
+.root {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  min-width: 0;
+}
+
+.breadcrumb {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  color: var(--text-dim);
+  font-size: 13px;
+}
+
+.breadcrumb li + li::before {
+  content: '/';
+  margin-right: 6px;
+}
+
+.header {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.title {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px;
+}
+
+.title h1 {
+  margin: 0;
+  overflow-wrap: anywhere;
+}
+
+.manual {
+  padding: 2px 8px;
+  border: 1px solid var(--border-strong);
+  border-radius: 6px;
+  font-size: 13px;
+}
+
+.invocation,
+.description {
+  margin: 0;
+}
+
+.description {
+  color: var(--text-dim);
+}
+
+.label {
+  color: var(--text-dim);
+  font-size: 13px;
+}
+
+.install {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px;
+}
+
+.install code,
+.invocation code {
+  font-family: var(--font-mono);
+  overflow-wrap: anywhere;
+}
+
+.fields {
+  display: grid;
+  gap: 12px;
+  margin: 0;
+}
+
+.field {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px 12px;
+}
+
+.field dt {
+  min-width: 120px;
+  color: var(--text-dim);
+}
+
+.field dd {
+  margin: 0;
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+
+.field code {
+  font-family: var(--font-mono);
+}
+
+.codeList {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}

@@ -1,0 +1,6 @@
+{
+  "name": "dep",
+  "version": "2.0.0",
+  "description": "Dependency target, HEAD at 2.0.0.",
+  "author": { "name": "fixture" }
+}

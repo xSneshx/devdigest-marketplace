@@ -1,0 +1,65 @@
+name: validate
+
+on:
+  pull_request:
+  push:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: validate-${{ github.ref }}
+  cancel-in-progress: true
+
+env:
+  # Exact pin: the CLI check needs Claude Code >= 2.1.296. No model credential is used anywhere.
+  CLAUDE_CODE_VERSION: "2.1.296"
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Install Claude Code CLI (pinned)
+        run: npm i -g "@anthropic-ai/claude-code@${CLAUDE_CODE_VERSION}"
+
+      - name: Unit tests
+        run: npm test
+
+      - name: Resolve base ref
+        id: base
+        env:
+          EVENT_NAME: ${{ github.event_name }}
+          BASE_REF: ${{ github.base_ref }}
+          BEFORE_SHA: ${{ github.event.before }}
+        run: |
+          if [ "$EVENT_NAME" = "pull_request" ]; then
+            base="origin/${BASE_REF}"
+          elif [ -n "$BEFORE_SHA" ] && [ "$BEFORE_SHA" != "0000000000000000000000000000000000000000" ]; then
+            base="$BEFORE_SHA"
+          elif [ "$GITHUB_REF_NAME" != "main" ] && git rev-parse --verify --quiet origin/main >/dev/null; then
+            # First push of a new branch: compare the whole branch against main, not just its last commit.
+            base="$(git merge-base origin/main HEAD)"
+          else
+            base="HEAD~1"
+          fi
+          echo "ref=${base}" >> "$GITHUB_OUTPUT"
+
+      - name: Marketplace checks
+        env:
+          BASE_REF_RESOLVED: ${{ steps.base.outputs.ref }}
+        run: node scripts/ci/run-all.mjs --with-cli --snapshot --require-evals --base "$BASE_REF_RESOLVED"
+
+      - name: Dependency-resolution negative test (AC-74)
+        run: bash tests/dependency-resolution/local-negative.sh

@@ -1,0 +1,7 @@
+{
+  "name": "app-obj",
+  "version": "1.0.0",
+  "description": "Object-form dependency with range ^1.0.0.",
+  "author": { "name": "fixture" },
+  "dependencies": [{ "name": "dep", "version": "^1.0.0" }]
+}

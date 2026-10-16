@@ -1,0 +1,2 @@
+{"timestamp":"2026-01-01T10:00:05Z","uuid":"u4","message":{"id":"msg_9","model":"model-a","content":[{"type":"tool_use","name":"Grep"}],"usage":{"input_tokens":7,"output_tokens":2,"cache_read_input_tokens":50,"cache_creation_input_tokens":10}}}
+{"timestamp":"2026-01-01T10:00:20Z","uuid":"u5","message":{"id":"msg_10","model":"model-a","content":[{"type":"text","text":"ok"}],"usage":{"input_tokens":3,"output_tokens":1,"cache_read_input_tokens":60,"cache_creation_input_tokens":0}}}

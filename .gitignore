@@ -1,3 +1,9 @@
 evals-out/
 node_modules/
 .DS_Store
+plugins/evals/results/
+
+# Catalog site build output (generated)
+site/dist/
+site/public/site-index.json
+site/coverage/

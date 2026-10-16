@@ -1,0 +1,36 @@
+{
+  "name": "testmp",
+  "owner": {
+    "name": "fixture"
+  },
+  "plugins": [
+    {
+      "name": "dep",
+      "source": "./plugins/dep",
+      "description": "Dependency target, tagged 1.0.0 and 2.0.0."
+    },
+    {
+      "name": "app-obj",
+      "source": "./plugins/app-obj",
+      "description": "Depends on dep with an object-form range."
+    },
+    {
+      "name": "app-str",
+      "source": "./plugins/app-str",
+      "description": "Depends on dep with a string-form range."
+    },
+    {
+      "name": "app-obj-miss",
+      "source": "./plugins/app-obj-miss",
+      "description": "Object-form dependency, range ^3.0.0, no matching tag."
+    },
+    {
+      "name": "app-str-miss",
+      "source": "./plugins/app-str-miss",
+      "description": "String-form dependency, range ^3.0.0, no matching tag."
+    }
+  ],
+  "metadata": {
+    "description": "Fixture marketplace for dependency-range resolution tests."
+  }
+}

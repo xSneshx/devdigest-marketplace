@@ -1,0 +1,171 @@
+{
+  "app": {
+    "documentTitle": "{screen} · {name}",
+    "skipToContent": "Skip to content",
+    "loading": "Loading the catalog…",
+    "loadError": "The catalog could not be loaded.",
+    "retry": "Try again",
+    "noscript": "This catalog needs JavaScript. The same content is available in the repository:",
+    "noscriptLink": "Browse the repository",
+    "mainNav": "Main navigation",
+    "breadcrumbNav": "Breadcrumb",
+    "routeChanged": "Navigated to {screen}"
+  },
+  "kind": {
+    "plugin": "Plugin",
+    "skill": "Skill",
+    "agent": "Agent",
+    "command": "Command",
+    "hook": "Hook",
+    "mcp": "MCP server"
+  },
+  "kindPlural": {
+    "plugin": "Plugins",
+    "skill": "Skills",
+    "agent": "Agents",
+    "command": "Commands",
+    "hook": "Hooks",
+    "mcp": "MCP servers"
+  },
+  "header": {
+    "searchLabel": "Search the catalog",
+    "searchPlaceholder": "Search plugins and components",
+    "openPalette": "Open quick search",
+    "paletteShortcut": "Ctrl K",
+    "themeToLight": "Switch to light theme",
+    "themeToDark": "Switch to dark theme",
+    "repository": "Repository"
+  },
+  "nav": {
+    "home": "Home",
+    "search": "Catalog",
+    "whatsNew": "What's new",
+    "gettingStarted": "Getting started"
+  },
+  "home": {
+    "eyebrow": "Plugin marketplace",
+    "heroTitle": "Find a plugin, skill or agent and install it in one command",
+    "heroSubtitle": "Every component of {name}, with its install command, dependencies and release history.",
+    "heroSearchLabel": "Search the catalog",
+    "heroSearchPlaceholder": "Try a name, a keyword or a command",
+    "ctaGettingStarted": "Getting started",
+    "ctaBrowse": "Browse the catalog",
+    "statsHeading": "Catalog at a glance",
+    "statTileLabel": "{count} {kind}",
+    "browseByKindHeading": "Browse by kind",
+    "keywordsHeading": "Popular keywords",
+    "whatsNewHeading": "Latest releases",
+    "whatsNewAll": "All releases",
+    "footerReleases": {
+      "one": "{count} release",
+      "other": "{count} releases"
+    },
+    "footerLatest": "Latest release {date}",
+    "footerBuiltFrom": "built from {sha} · {date}",
+    "emptyTitle": "The catalog is empty",
+    "emptyBody": "No plugins have been published yet.",
+    "emptyGettingStarted": "Read how to get started",
+    "emptyContributing": "Read the contributing guide"
+  },
+  "search": {
+    "catalogTitle": "Catalog",
+    "resultsTitle": "Results for “{query}”",
+    "resultCount": {
+      "one": "{count} result",
+      "other": "{count} results"
+    },
+    "sortLabel": "Sort by",
+    "sortRelevance": "Relevance",
+    "sortName": "Name",
+    "sortUpdated": "Recently updated",
+    "filtersHeading": "Filters",
+    "filterKind": "Kind",
+    "filterKeyword": "Keyword",
+    "filterAuthor": "Author",
+    "filterAuthorAny": "Any author",
+    "clearAll": "Clear all",
+    "noResultsTitle": "Nothing matches",
+    "noResultsBody": "Try a different word or remove some filters.",
+    "clearFilters": "Clear filters"
+  },
+  "card": {
+    "open": "Open",
+    "openLabel": "Open {name}",
+    "copyInstall": "Copy install command",
+    "version": "v{version}",
+    "byline": "{plugin} · {author}"
+  },
+  "copy": {
+    "copy": "Copy",
+    "copied": "Copied",
+    "announced": "Copied: {text}",
+    "manual": "Copying is not available here. Select the text and copy it by hand."
+  },
+  "plugin": {
+    "version": "Version",
+    "author": "Author",
+    "compatibility": "Compatibility",
+    "updated": "Updated",
+    "install": "Install",
+    "viewOnGitHub": "View on GitHub",
+    "componentsHeading": "Components",
+    "dependenciesHeading": "Dependencies",
+    "requiredByHeading": "Required by",
+    "noDependencies": "This plugin has no dependencies.",
+    "noDependents": "No other plugin requires this one.",
+    "readmeHeading": "Readme",
+    "noReadme": "This plugin has no readme.",
+    "changelogHeading": "Changelog",
+    "unreleased": "Unreleased"
+  },
+  "component": {
+    "breadcrumbCatalog": "Catalog",
+    "invocation": "Invocation",
+    "install": "Install",
+    "tools": "Allowed tools",
+    "disallowedTools": "Disallowed tools",
+    "model": "Model",
+    "argumentHint": "Argument hint",
+    "manualOnly": "Manual only",
+    "manualOnlyHint": "The model does not start this on its own. Run it yourself.",
+    "event": "Event",
+    "matcher": "Matcher",
+    "timeout": "Timeout",
+    "timeoutSeconds": "{n} s",
+    "documentation": "Documentation",
+    "viewSource": "View source"
+  },
+  "whatsNew": {
+    "title": "What's new",
+    "subtitle": "Recent releases across the marketplace, newest first.",
+    "evidence": "Evidence",
+    "empty": "No releases have been tagged yet."
+  },
+  "gettingStarted": {
+    "title": "Getting started",
+    "intro": "Add the marketplace once, then install any plugin from it.",
+    "stepAdd": "Add the marketplace",
+    "stepAddBody": "Register this repository as a marketplace in your session.",
+    "stepInstall": "Install a plugin",
+    "stepInstallBody": "Pick a plugin from the catalog and run its install command.",
+    "stepUpdate": "Update later",
+    "stepUpdateBody": "Refresh the marketplace to pick up new releases, then update the plugin.",
+    "privateNote": "The repository is private. Installing needs git credentials that work without a prompt, for example a credential helper or an SSH key already loaded.",
+    "newSessionNote": "Start a new session after installing or updating so the change takes effect."
+  },
+  "palette": {
+    "label": "Quick search",
+    "inputLabel": "Search plugins and components",
+    "placeholder": "Type to search",
+    "noResults": "No matches",
+    "hint": "Enter opens the result, Escape closes."
+  },
+  "notFound": {
+    "title": "Page not found",
+    "pluginBody": "No plugin named “{name}”.",
+    "componentBody": "That component does not exist.",
+    "pageBody": "That page does not exist.",
+    "home": "Go home",
+    "search": "Search the catalog"
+  }
+}
