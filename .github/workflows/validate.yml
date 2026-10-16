@@ -48,6 +48,9 @@ jobs:
             base="origin/${BASE_REF}"
           elif [ -n "$BEFORE_SHA" ] && [ "$BEFORE_SHA" != "0000000000000000000000000000000000000000" ]; then
             base="$BEFORE_SHA"
+          elif [ "$GITHUB_REF_NAME" != "main" ] && git rev-parse --verify --quiet origin/main >/dev/null; then
+            # First push of a new branch: compare the whole branch against main, not just its last commit.
+            base="$(git merge-base origin/main HEAD)"
           else
             base="HEAD~1"
           fi
