@@ -1,5 +1,5 @@
 {
-  "name": "devdigest-marketplace-stable",
+  "name": "devdigest-marketplace",
   "owner": { "name": "xSneshx" },
   "metadata": { "description": "Stable channel: the verified release snapshot of the devdigest-marketplace plugins." },
   "plugins": [
