@@ -39,7 +39,17 @@ export function parseMessages(text) {
 }
 
 export const findInit = (messages) => messages.find((m) => m?.type === 'system' && m?.subtype === 'init') ?? null;
-export const findResult = (messages) => [...messages].reverse().find((m) => m?.type === 'result') ?? null;
+/** The run's result. A session that resumes after background tasks emits several `result` events:
+    cost, modelUsage and subtype are cumulative (taken from the last one), while num_turns and
+    duration_ms are per segment (summed). */
+export const findResult = (messages) => {
+  const results = messages.filter((m) => m?.type === 'result');
+  if (results.length === 0) return null;
+  const last = results[results.length - 1];
+  if (results.length === 1) return last;
+  const sum = (key) => results.reduce((acc, r) => acc + (Number.isFinite(r[key]) ? r[key] : 0), 0);
+  return { ...last, num_turns: sum('num_turns'), duration_ms: sum('duration_ms'), result_events: results.length };
+};
 
 export const table = (header, rows) =>
   [`| ${header.join(' | ')} |`, `|${header.map(() => '---').join('|')}|`, ...rows.map((r) => `| ${r.map((c) => cell(c)).join(' | ')} |`)].join('\n');

@@ -118,3 +118,23 @@ describe('cost-record', () => {
     assert.match(r.stdout, /\*\*successful\*\* \| \*\*yes\*\*/);
   });
 });
+
+describe('findResult with several result events', () => {
+  it('takes cost from the last event and sums turns and duration across segments', () => {
+    const r = findResult([
+      { type: 'result', subtype: 'success', total_cost_usd: 2.3, num_turns: 26, duration_ms: 277821 },
+      { type: 'assistant' },
+      { type: 'result', subtype: 'success', total_cost_usd: 2.3, num_turns: 4, duration_ms: 19315 },
+    ]);
+    assert.equal(r.total_cost_usd, 2.3);
+    assert.equal(r.num_turns, 30);
+    assert.equal(r.duration_ms, 297136);
+    assert.equal(r.result_events, 2);
+  });
+
+  it('returns the single event unchanged and null when there is none', () => {
+    const one = { type: 'result', total_cost_usd: 1, num_turns: 3, duration_ms: 10 };
+    assert.equal(findResult([one]), one);
+    assert.equal(findResult([{ type: 'assistant' }]), null);
+  });
+});
