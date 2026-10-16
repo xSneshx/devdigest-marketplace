@@ -1,6 +1,13 @@
-# devdigest-marketplace
+# devdigest-marketplace (stable channel)
 
-A private Claude Code plugin marketplace of project-agnostic, spec-driven engineering
+This is the **stable channel** of the devdigest-marketplace: the `stable` branch, catalog name
+`devdigest-marketplace-stable`, serving the verified release snapshot of the plugins. The
+latest channel (branch `main`, catalog name `devdigest-marketplace`) carries newer releases.
+Use one channel per project: both channels serve the same plugin names. The switch procedure,
+the promotion rule and the rollback rule are in
+[Release channels](https://github.com/xSneshx/devdigest-marketplace/blob/main/docs/RELEASES.md#release-channels).
+
+A Claude Code plugin marketplace of project-agnostic, spec-driven engineering
 plugins. Five versioned plugins, an object-form dependency graph, plugin-level guard hooks
 and tagged releases.
 
@@ -23,12 +30,12 @@ Add the marketplace once, then install what you need. Dependencies are installed
 enabled automatically.
 
 ```sh
-claude plugin marketplace add xSneshx/devdigest-marketplace
-claude plugin install sdd-engineering@devdigest-marketplace
+claude plugin marketplace add xSneshx/devdigest-marketplace#stable
+claude plugin install sdd-engineering@devdigest-marketplace-stable
 ```
 
 Install a single plugin the same way, for example
-`claude plugin install research-tools@devdigest-marketplace`. Start a new session after
+`claude plugin install research-tools@devdigest-marketplace-stable`. Start a new session after
 installing or updating so hooks, agents and skills are loaded.
 
 ## Dependency graph

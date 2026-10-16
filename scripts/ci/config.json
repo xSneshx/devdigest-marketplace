@@ -1,1 +1,4 @@
-{ "dependencyResolution": "head-in-range" }
+{
+  "dependencyResolution": "head-in-range",
+  "channels": { "main": "devdigest-marketplace", "stable": "devdigest-marketplace-stable" }
+}
