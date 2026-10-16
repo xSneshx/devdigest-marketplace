@@ -1,0 +1,18 @@
+Deliver one small feature in this project through the full spec-driven chain, in this order.
+
+Feature: add `src/word-count.ts` exporting the function `wordCount(text: string): number`.
+- A word is a maximal run of non-whitespace characters.
+- An empty string or a whitespace-only string returns 0.
+- Named export, no new dependency, no I/O. Put its unit tests in `src/word-count.test.ts`.
+
+Chain:
+1. Run `/sdd-engineering:spec` with the feature above. When the spec exists, set its `Status:` line to `approved` yourself. You are explicitly authorised to do that for this task.
+2. Run `/sdd-engineering:plan` on that spec, in single-implementer mode.
+3. Run `/sdd-engineering:execute-plan` on the plan.
+4. Run `/sdd-engineering:verify` on the plan.
+
+Rules:
+- Do not ask questions. Make the smallest reasonable decision and continue.
+- Do not commit, do not push, do not run `npm install`.
+- Follow the project's `CLAUDE.md`. Never edit `src/generated/`.
+- Finish by quoting the verifier's verdict line verbatim, then stop.

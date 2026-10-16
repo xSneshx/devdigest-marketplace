@@ -1,6 +1,6 @@
 # devdigest-marketplace
 
-A private Claude Code plugin marketplace of project-agnostic, spec-driven engineering
+A public Claude Code plugin marketplace of project-agnostic, spec-driven engineering
 plugins. Five versioned plugins, an object-form dependency graph, plugin-level guard hooks
 and tagged releases.
 
@@ -31,6 +31,27 @@ Install a single plugin the same way, for example
 `claude plugin install research-tools@devdigest-marketplace`. Start a new session after
 installing or updating so hooks, agents and skills are loaded.
 
+The repository is public: adding it over HTTPS needs no git credentials.
+
+### Release channels
+
+| Channel | Ref | Catalog name | Add command |
+|---|---|---|---|
+| latest | `main` | `devdigest-marketplace` | `claude plugin marketplace add xSneshx/devdigest-marketplace` |
+| stable | `stable` | `devdigest-marketplace-stable` | `claude plugin marketplace add xSneshx/devdigest-marketplace#stable` |
+
+Both channels serve the same plugin names, so a project enables plugins from one channel
+only. The switch procedure, the promotion rule and the rollback rule are in
+[docs/RELEASES.md](docs/RELEASES.md#release-channels).
+
+## Troubleshooting
+
+**Adding the marketplace asks for a git username or password.** This applies only to a private
+fork of this repository; the public repository never asks. For a private fork, give git a
+credential that works without a prompt: run `gh auth setup-git` after `gh auth login`, or use a
+prompt-free SSH key and add the fork by its SSH URL. Never put a token in a URL or in a file
+of this repository.
+
 ## Dependency graph
 
 ```mermaid
@@ -51,5 +72,5 @@ see [docs/PLUGIN-GUIDELINES.md](docs/PLUGIN-GUIDELINES.md).
 
 - [docs/PLUGIN-GUIDELINES.md](docs/PLUGIN-GUIDELINES.md): plugin structure, manifest fields, dependency rules, consumer inputs
 - [docs/SECURITY.md](docs/SECURITY.md): permissions, guard model, secrets, hook and script review
-- [docs/RELEASES.md](docs/RELEASES.md): SemVer, tags, update, rollback
+- [docs/RELEASES.md](docs/RELEASES.md): SemVer, tags, release channels, update, rollback
 - [CONTRIBUTING.md](CONTRIBUTING.md): how to change a plugin and test it locally

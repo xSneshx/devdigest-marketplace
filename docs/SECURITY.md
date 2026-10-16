@@ -54,6 +54,20 @@ newer is required.
 - Release evidence redacts tokens and replaces the home directory with `~`.
 - Components never log a secret or a full prompt.
 
+## Repository visibility and credentials
+
+The repository is public. Adding the marketplace over HTTPS needs no git credentials, and no
+document, script or workflow of this repository asks for one. A private fork needs a git
+credential that works without a prompt; that case is covered by the Troubleshooting section of
+the root `README.md`.
+
+The `stable` branch is protected on GitHub: no force push, no deletion, and changes land only
+through a pull request with a green `validate` run. A promotion is a new commit, never a
+rewrite (see "Release channels" in `docs/RELEASES.md`).
+
+The evidence redaction rules above apply to channel and cost evidence as well: home paths
+shortened to `~`, no tokens, no raw CLI output committed.
+
 ## Hook and script review
 
 Every hook and supporting script change needs review by a CODEOWNER (see `CODEOWNERS`:

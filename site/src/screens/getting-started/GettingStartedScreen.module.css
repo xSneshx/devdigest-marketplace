@@ -41,6 +41,23 @@
   font-weight: 600;
 }
 
+.commandGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  min-width: 0;
+}
+
+.commandLabel {
+  font-size: 13px;
+  color: var(--text-dim);
+}
+
+.docsLink {
+  align-self: flex-start;
+  font-size: 13px;
+}
+
 .command {
   display: flex;
   flex-wrap: wrap;

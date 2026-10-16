@@ -150,7 +150,10 @@
     "stepInstallBody": "Pick a plugin from the catalog and run its install command.",
     "stepUpdate": "Update later",
     "stepUpdateBody": "Refresh the marketplace to pick up new releases, then update the plugin.",
-    "privateNote": "The repository is private. Installing needs git credentials that work without a prompt, for example a credential helper or an SSH key already loaded.",
+    "publicNote": "The repository is public. Adding it over HTTPS works without any git login.",
+    "channelLatest": "Latest channel ({name})",
+    "channelStable": "Stable channel ({name})",
+    "channelDocsLink": "Read about release channels and how to switch",
     "newSessionNote": "Start a new session after installing or updating so the change takes effect."
   },
   "palette": {

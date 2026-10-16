@@ -5,6 +5,9 @@ import {
   marketplaceAddCommand,
   marketplaceUpdateCommand,
   pluginUpdateCommand,
+  releaseChannelsUrl,
+  STABLE_CHANNEL_REF,
+  stableMarketplaceName,
 } from '../../contract/commands';
 import type { SiteIndex } from '../../contract/site-index';
 import { useSiteIndex } from '../../lib/index-context';
@@ -13,18 +16,27 @@ import styles from './GettingStartedScreen.module.css';
 
 interface CommandLineProps {
   command: string;
+  label?: string;
 }
 
-function CommandLine({ command }: CommandLineProps) {
+function CommandLine({ command, label }: CommandLineProps) {
   const ref = useRef<HTMLElement>(null);
   return (
-    <div className={styles.command}>
-      <code ref={ref} className={styles.code}>
-        {command}
-      </code>
-      <CopyButton text={command} targetRef={ref} />
+    <div className={styles.commandGroup}>
+      {label ? <p className={styles.commandLabel}>{label}</p> : null}
+      <div className={styles.command}>
+        <code ref={ref} className={styles.code}>
+          {command}
+        </code>
+        <CopyButton text={command} targetRef={ref} />
+      </div>
     </div>
   );
+}
+
+interface StepCommand {
+  command: string;
+  label?: string;
 }
 
 /** A plugin that depends on nothing is the safest first install; fall back to the first by name. */
@@ -38,23 +50,32 @@ export function GettingStartedScreen() {
   const marketplace = meta.marketplaceName;
   const example = pickExamplePlugin(plugins);
 
-  const steps: Array<{ title: TranslationKey; body: TranslationKey; commands: string[] }> = [
+  const steps: Array<{ title: TranslationKey; body: TranslationKey; commands: StepCommand[] }> = [
     {
       title: 'gettingStarted.stepAdd',
       body: 'gettingStarted.stepAddBody',
-      commands: [marketplaceAddCommand(meta.repo.owner, meta.repo.name)],
+      commands: [
+        {
+          label: t('gettingStarted.channelLatest', { name: marketplace }),
+          command: marketplaceAddCommand(meta.repo.owner, meta.repo.name),
+        },
+        {
+          label: t('gettingStarted.channelStable', { name: stableMarketplaceName(marketplace) }),
+          command: marketplaceAddCommand(meta.repo.owner, meta.repo.name, STABLE_CHANNEL_REF),
+        },
+      ],
     },
     {
       title: 'gettingStarted.stepInstall',
       body: 'gettingStarted.stepInstallBody',
-      commands: example ? [installCommand(example, marketplace)] : [],
+      commands: example ? [{ command: installCommand(example, marketplace) }] : [],
     },
     {
       title: 'gettingStarted.stepUpdate',
       body: 'gettingStarted.stepUpdateBody',
       commands: [
-        marketplaceUpdateCommand(marketplace),
-        ...(example ? [pluginUpdateCommand(example, marketplace)] : []),
+        { command: marketplaceUpdateCommand(marketplace) },
+        ...(example ? [{ command: pluginUpdateCommand(example, marketplace) }] : []),
       ],
     },
   ];
@@ -68,13 +89,23 @@ export function GettingStartedScreen() {
           <li key={step.title} className={styles.step}>
             <h2 className={styles.stepTitle}>{t(step.title)}</h2>
             <p className={styles.stepBody}>{t(step.body)}</p>
-            {step.commands.map((command) => (
-              <CommandLine key={command} command={command} />
+            {step.commands.map(({ command, label }) => (
+              <CommandLine key={command} command={command} label={label} />
             ))}
+            {step.title === 'gettingStarted.stepAdd' ? (
+              <a
+                className={styles.docsLink}
+                href={releaseChannelsUrl(meta.repo.url, meta.repo.defaultBranch)}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                {t('gettingStarted.channelDocsLink')}
+              </a>
+            ) : null}
           </li>
         ))}
       </ol>
-      <p className={styles.note}>{t('gettingStarted.privateNote')}</p>
+      <p className={styles.note}>{t('gettingStarted.publicNote')}</p>
       <p className={styles.note}>{t('gettingStarted.newSessionNote')}</p>
     </section>
   );
