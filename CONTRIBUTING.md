@@ -43,3 +43,9 @@ patterns, absolute filesystem paths and project-specific tokens in any committed
 - Changes to hooks, to supporting scripts, to `scripts/` and to `.github/` always need
   CODEOWNER review: they execute on consumer machines or in CI.
 - CI must be green. Releases follow [docs/RELEASES.md](docs/RELEASES.md).
+
+## Public repository and the stable branch
+
+The repository is public, so no git credentials are needed to add the marketplace over HTTPS.
+Never change the `stable` branch directly: it is protected, and it moves only through a
+promotion pull request that follows [docs/RELEASES.md](docs/RELEASES.md#release-channels).

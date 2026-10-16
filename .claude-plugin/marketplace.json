@@ -1,7 +1,7 @@
 {
   "name": "devdigest-marketplace",
   "owner": { "name": "xSneshx" },
-  "metadata": { "description": "Private marketplace of project-agnostic spec-driven engineering plugins for Claude Code." },
+  "metadata": { "description": "Public marketplace of project-agnostic spec-driven engineering plugins for Claude Code." },
   "plugins": [
     { "name": "engineering-paved-path", "source": "./plugins/engineering-paved-path", "description": "Paved-path engineering skills: React, Next.js, Fastify, layering, TypeScript, Zod, security and diagrams.", "author": { "name": "xSneshx" }, "keywords": ["react", "nextjs", "fastify", "typescript", "zod", "security", "architecture"] },
     { "name": "research-tools", "source": "./plugins/research-tools", "description": "Read-only researcher agent for investigating a codebase or a topic before a change.", "author": { "name": "xSneshx" }, "keywords": ["research", "codebase"] },
