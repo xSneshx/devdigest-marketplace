@@ -11,10 +11,14 @@ Negative run (a test branch that targets `stable` and carries the latest catalog
 
 | Field | Value |
 |---|---|
-| Date | |
-| Pull request / run link | |
+| Date | 2026-10-16 |
+| Pull request / run link | draft pull request https://github.com/xSneshx/devdigest-marketplace/pull/3 (stable catalog name set back to `devdigest-marketplace`); closed unmerged, its branch deleted |
 | Expected failure text | the log names the expected value `devdigest-marketplace-stable` |
-| Observed | |
+| Observed | the `validate` run failed on `FAIL channel (1)` with the line below (`evals-out/l08/stable-negative.log`) |
+
+```text
+catalog name "devdigest-marketplace" on channel ref "stable"; expected "devdigest-marketplace-stable"
+```
 
 ## AC-14: audit of every check on `stable`
 
@@ -43,21 +47,46 @@ Green `validate` run on `stable` (skipped checks and their reasons are listed in
 
 | Field | Value |
 |---|---|
-| Date | |
-| Run link | |
-| Log excerpt of skipped checks | |
+| Date | 2026-10-16 |
+| Run | the `validate` run of pull request https://github.com/xSneshx/devdigest-marketplace/pull/2 (target `stable`), log in `evals-out/l08/stable-pr-validate.log` |
+| Result | `PASS channel` and all 14 checks PASS (`catalog`, `channel`, `cli`, `codeowners`, `content`, `dep-form`, `frontmatter`, `graph`, `guard-parity`, `head-in-range`, `namespacing`, `skills-backed`, `structure`, `versions`) |
+| Log excerpt of skipped checks | none: the log has no `SKIP` line. (A `FAIL head-in-range` line appears in that log only inside a negative unit-test fixture, not in the marketplace checks.) |
+
+Pull request #2 was squash-merged; the resulting `stable` head is
+`d569114a68392cde3e10136511c9a915f1f31893`. `git diff sdd-engineering--v1.0.0 origin/stable -- plugins/`
+is empty (0 lines). `git diff --stat` between the tag and `origin/stable` lists only
+`.claude-plugin/marketplace.json`, `.github/workflows/validate.yml`, `README.md`,
+`scripts/ci/check-channel.mjs`, `scripts/ci/config.json`, `scripts/ci/lib/check.mjs` and
+`tests/ci/core/channel.test.mjs` (AC-11, the paths allowed by Errata E-1).
 
 ## AC-15: branch protection
 
 Protection settings of `stable` (force pushes and deletion off; changes only through a pull
 request with a green `validate` run):
 
+Saved in full in `evals-out/l08/stable-protection.json`; the relevant fields:
+
 ```json
-(paste the protection settings JSON)
+{
+  "required_status_checks": { "strict": true, "contexts": ["validate"] },
+  "required_pull_request_reviews": { "required_approving_review_count": 0 },
+  "enforce_admins": { "enabled": true },
+  "allow_force_pushes": { "enabled": false },
+  "allow_deletions": { "enabled": false }
+}
 ```
+
+Changes land only through a pull request with a green `validate` run. No approving review is
+required (0 approvals).
 
 Attempted direct push, rejected:
 
 ```text
-(paste the rejection message)
+remote: error: GH006: Protected branch update failed for refs/heads/stable.
+remote: - Changes must be made through a pull request.
+remote: - Required status check "validate" is expected.
+ ! [remote rejected] HEAD -> stable (protected branch hook declined)
+error: failed to push some refs to 'https://github.com/xSneshx/devdigest-marketplace.git'
 ```
+
+The command was `git push origin HEAD:stable` (`evals-out/l08/stable-direct-push.txt`).

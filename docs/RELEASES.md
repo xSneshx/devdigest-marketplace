@@ -74,9 +74,13 @@ project root.
 1. Uninstall every plugin installed from X in the project. Uninstall `sdd-engineering` first,
    then the four dependencies:
    `claude plugin uninstall <plugin>@<X catalog> --scope project`.
-2. Remove X's marketplace declaration if the CLI refuses to register Y next to it:
-   `claude plugin marketplace remove <X catalog> --scope project`.
-   <!-- AC-20: filled from R2 evidence -->
+2. Removing X's marketplace first is not required. Observed on CLI 2.1.296 (isolated
+   configuration, see `docs/release-evidence/l08/channel-probe.md`): adding
+   `xSneshx/devdigest-marketplace#stable` while the same repository is registered as
+   `devdigest-marketplace` succeeds, and both registrations coexist (`devdigest-marketplace` and
+   `devdigest-marketplace-stable`). Skip this step. Remove X's marketplace
+   (`claude plugin marketplace remove <X catalog> --scope project`) only if you also want to stop
+   offering X in this project; the plugins of X are already uninstalled by step 1.
 3. Add Y's marketplace at project scope (add command from the table above, with
    `--scope project`).
 4. Install `sdd-engineering` from Y; its dependencies follow from Y:
@@ -135,7 +139,7 @@ every promotion. This homework builds Option A (the `stable` branch) only.
 
 | Date | From release | To release | `stable` commit | Release evidence | Consumer verification |
 |---|---|---|---|---|---|
-<!-- filled by T8 -->
+| 2026-10-16 | none (stable initial snapshot) | 1.0.0 (all five plugins) | `d569114a68392cde3e10136511c9a915f1f31893` (PR #2) | `docs/release-evidence/sdd-engineering--v1.0.0.md`, `docs/release-evidence/evals-1.0.0.md`, `docs/release-evidence/l08/ci-channel.md` | `docs/release-evidence/l08/channel-switches.md` (step 1) and the successful baseline run `docs/release-evidence/l08/cost-runs/b1.md` |
 
 ### Deferred plugin-README wording
 
